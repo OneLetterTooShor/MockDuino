@@ -82,3 +82,28 @@ void loop() {
 
 // In your actual test file, you would include your arduino code and this test file
 // and run it using a unit testing framework.
+
+
+## Development Roadmap and VS Code Integration
+
+This project aims to not only provide a mocking library but also streamline the entire Arduino development workflow, particularly for Linux users.  The following features are planned for future development:
+
+### VS Code Extension for Arduino Development
+
+A key goal is to create a VS Code extension that simplifies building, running, debugging, and uploading Arduino code directly from the editor on Linux.  This extension will leverage the Arduino CLI or other suitable tools to provide a seamless development experience.
+
+**Planned Features:**
+
+* **Project Creation:**  Easily create new Arduino projects with the correct structure and dependencies.
+* **Build System Integration:**  Integrate with the Arduino build system (or PlatformIO) to compile and link code.
+* **Board Selection:**  Support selecting the target Arduino board from a list of available options.
+* **Port Detection:**  Automatically detect connected Arduino boards and their corresponding serial ports.
+* **Upload Functionality:**  Upload compiled code to the target board with a single click.
+* **Debugging Support:**  Integrate with a debugger (e.g., GDB) to allow for step-through debugging of Arduino code on supported boards.  This will likely require some form of hardware debugging adapter.
+* **Serial Monitor Integration:**  Embed a serial monitor within VS Code to view output from the Arduino board.
+* **Mock Library Integration:**  Seamlessly integrate the Arduino Mock Library into the VS Code development workflow.  This will simplify running unit tests and simulations.
+* **Configuration:**  Allow users to configure various settings, such as the Arduino IDE path, board type, and serial port.
+
+### Cross-Platform Compatibility (Future)
+
+While the initial focus is on Linux, future iterations of the VS Code extension will explore cross-platform compatibility to support Windows and macOS.
