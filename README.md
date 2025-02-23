@@ -19,6 +19,9 @@ Testing Arduino code that interacts with hardware can be challenging.  Tradition
     * Provide mock ADC values (raw readings) to simulate analog sensor inputs.
     * Convert raw ADC values to voltage or other units using configurable mappings.
     * Simulate changes in analog readings over time.
+* **ESP32 Wifi + Bluetooth Mocking:**
+    * Mock communication between the main RA4M1 MCU and the ESP32-S3-MINI-1-N8 secondary MCU
+    * Mock wifi + bluetooth function calls
 * **Timing Mocking:**
     * Mock `delay()` and `millis()` functions to control the passage of simulated time.
     * Allow tests to "fast-forward" time to specific points.
@@ -83,6 +86,10 @@ void loop() {
 // In your actual test file, you would include your arduino code and this test file
 // and run it using a unit testing framework.
 ```
+
+### Instructions for Compiling, Building, and Debugging Code via VSCode
+
+In order to have the ability to compile, build, and debug your code on VSCode, additional tools are required to interface with the RA4M1 MCU. It should be researched to see if there is support for USB programming and debugging. Otherwise it is assumed that an Atmel-ICE Hardware Debugger will be used to interface with the MCU, via the SWD pins.
 
 ## Development Roadmap and VS Code Integration
 

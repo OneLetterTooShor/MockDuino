@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build with Make", // Task name shown in VS Code
+            "type": "shell",
+            "command": "make",         // Command to execute (make)
+            "args": [],                // No arguments for make in this basic setup
+            "options": {
+                "cwd": "${workspaceFolder}" // Working directory is your project root
+            },
+            "group": {
+                "kind": "build",        // This is a build task
+                "isDefault": true       // Make this the default build task (Ctrl+Shift+B)
+            },
+            "problemMatcher": [
+                "$gcc"                  // Use GCC problem matcher for error parsing
+            ]
+        },
+        {
+            "label": "Clean with Make",
+            "type": "shell",
+            "command": "make",
+            "args": ["clean"],          // Run 'make clean' command
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []        // No problem matcher for clean task
+        },
+        {
+            "label": "Flash with Make",
+            "type": "shell",
+            "command": "make",
+            "args": ["flash"],          // Run 'make flash' command
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []        // No problem matcher for flash (usually output is not compiler errors)
+        },
+        {
+            "label": "Debug with Make",
+            "type": "shell",
+            "command": "make",
+            "args": ["debug"],          // Run 'make debug' command - may just print debug instructions
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []        // No problem matcher for debug (usually starts a debugger externally)
+        }
+    ]
+}

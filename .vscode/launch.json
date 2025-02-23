@@ -1,0 +1,72 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug with OpenOCD", // Configuration name shown in VS Code
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/MockduinoLib.elf", // *** ADJUST ELF FILE PATH if needed based on your Makefile's OUTPUT_ELF ***
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/path/to/your/arm-none-eabi-gdb",
+            // *** CUSTOMIZE GDB DEBUGGER PATH BELOW ***
+            //  Specify the full path to your ARM GDB debugger executable.
+            //  Example (replace with your actual path):
+            //  "/usr/bin/arm-none-eabi-gdb"  (Linux example)
+            //  "C:/Program Files/Arm GNU Toolchain/..." (Windows example)
+
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "target remote localhost:3333" // Connect to OpenOCD GDB server, port 3333 (default)
+                },
+                {
+                    "text": "monitor reset halt"          // Reset and halt the MCU
+                },
+                // Optional: Flash before debugging - uncomment if needed, adjust path if needed
+                // {
+                //     "text": "monitor flash write_image erase build/MockduinoLib.elf"
+                // },
+                // {
+                //     "text": "monitor reset halt"          // Reset again after flashing
+                // }
+            ],
+            "serverLaunchCommands": [
+                "/path/to/your/openocd",
+                // *** CUSTOMIZE OPENOCD PATH BELOW ***
+                //  Specify the full path to your OpenOCD executable.
+                //  Example (replace with your actual path):
+                //  "/usr/bin/openocd" (Linux example)
+                //  "C:/OpenOCD/bin/openocd.exe" (Windows example)
+
+                "-f",
+                "interface/atmel-ice.cfg",
+                // *** CUSTOMIZE INTERFACE CONFIG FILE BELOW if needed ***
+                //  Configuration file for Atmel-ICE. You might need to adjust
+                //  based on your specific Atmel-ICE variant (e.g., atmel-ice-usb.cfg).
+                //  Ensure this path is correct relative to your OpenOCD installation
+                //  or provide the absolute path.
+
+                "-f",
+                "target/ra4m1.cfg"
+                // *** CUSTOMIZE TARGET CONFIG FILE BELOW - VERY IMPORTANT! ***
+                //  You **MUST** find or create an OpenOCD target configuration file
+                //  specifically for the RA4M1 MCU.
+                //  This is crucial for OpenOCD to correctly communicate with your RA4M1.
+                //  You might need to search online for "ra4m1.cfg OpenOCD" or adapt
+                //  a configuration file for a similar Renesas RA Family MCU.
+                //  Ensure this path is correct relative to your OpenOCD installation
+                //  or provide the absolute path.
+            ],
+            "serverStarted": "Info : Listening on port (\\d+)" // Regex to detect OpenOCD start
+        }
+    ]
+}

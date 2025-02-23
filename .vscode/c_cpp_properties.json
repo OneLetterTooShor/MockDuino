@@ -1,0 +1,46 @@
+{
+    "configurations": [
+        {
+            "name": "Renesas RA4M1",  // You can change the name if you like
+            "includePath": [
+                "${workspaceFolder}/**", // Includes all folders in your workspace
+                "src/**",             // Specifically include your src folder
+                "examples/**",        // Include examples (if headers are there)
+                "tests/**",           // Include tests (if headers are there)
+                // *** CUSTOMIZE INCLUDE PATHS BELOW ***
+                // Add paths to your RA4M1 HAL (Hardware Abstraction Layer) headers,
+                // CMSIS (Cortex Microcontroller Software Interface Standard) headers,
+                // Renesas FSP (Flexible Software Package) generated code headers,
+                // and any other library headers your project uses.
+                // Example paths (ADJUST THESE TO YOUR ACTUAL PATHS):
+                "/path/to/your/ra_gen/**",         // e.g.,  If using Renesas FSP generated code
+                "/path/to/your/ra/**",            // e.g., If using Renesas RA HAL libraries
+                "/path/to/your/CMSIS/Include/**"   // e.g., If you have CMSIS headers installed
+            ],
+            "defines": [
+                // *** CUSTOMIZE DEFINES BELOW ***
+                // Define preprocessor macros specific to your RA4M1 target and project.
+                // Examples (ADJUST THESE AS NEEDED):
+                "TARGET_RA4M1",
+                "FSP_VERSION_MAJOR=4", // Example for Renesas FSP, adjust version
+                "FSP_VERSION_MINOR=0",
+                "ARDUINO=10813"        // If you need to mimic Arduino environment
+            ],
+            "compilerPath": "/path/to/your/arm-none-eabi-gcc",
+            // *** CUSTOMIZE COMPILER PATH ABOVE ***
+            //  Specify the full path to your ARM GCC compiler executable.
+            //  Example (replace with your actual path):
+            //  "/usr/bin/arm-none-eabi-gcc"  (Linux example)
+            //  "C:/Program Files/Arm GNU Toolchain/..." (Windows example)
+
+
+            "cStandard": "c11",       // Or "c99", "c17" depending on your project
+            "cppStandard": "c++17",     // Or "c++14", "c++20" depending on your project
+            "intelliSenseMode": "gcc-arm", // Or "clang-arm" if using Clang-based toolchain
+            "compileCommands": "${workspaceFolder}/compile_commands.json"
+            // Optional: If you generate a compile_commands.json file (for more complex builds),
+            // you can uncomment this line. For simple Makefiles, it's usually not needed.
+        }
+    ],
+    "version": 4
+}
