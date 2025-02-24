@@ -42,10 +42,46 @@ Testing Arduino code that interacts with hardware can be challenging.  Tradition
 
 ## Getting Started
 
-### Installation
+### Setting up the Development Environment
 
-1.  Download the library from the GitHub repository.
-2.  Include the library in your Arduino project.
+To simplify the initial setup process, the MockDuino project includes a `setup.sh` script. This script is designed to help you install the necessary development tools on your system, specifically the ARM toolchain (`arm-none-eabi-gcc` and related tools) and OpenOCD (for debugging).
+
+**Please follow these steps to run the setup script:**
+
+1.  **Open a Terminal:** Navigate to your terminal application (e.g., Bash, Zsh on Linux/macOS, or Git Bash on Windows if you are using it).
+2.  **Navigate to the Project Root:** Use the `cd` command to change your current directory to the root directory of the MockDuino project where the `setup.sh` file is located. For example, if your project is in `~/Documents/Mockduino`, you would type:
+
+    ```bash
+    cd ~/Documents/Mockduino
+    ```
+
+3.  **Make the Script Executable:** Before you can run the `setup.sh` script, you need to ensure it has execute permissions. Use the `chmod` command to make it executable:
+
+    ```bash
+    chmod +x setup.sh
+    ```
+
+4.  **Run the Setup Script:** Now you can execute the `setup.sh` script by typing:
+
+    ```bash
+    ./setup.sh
+    ```
+
+5.  **Administrator Password (sudo):** During the execution of the `setup.sh` script, you may be prompted to enter your administrator (or `sudo`) password. This is because the script uses `sudo` to install software packages system-wide using your operating system's package manager (like `apt-get` on Debian/Ubuntu, `brew` on macOS).  **This is normal for software installation. Only proceed if you trust the script and understand what it is doing.**
+
+6.  **Monitor the Script Output:** Carefully observe the output in your terminal while the script is running. The script will print messages indicating what it is doing, such as detecting your operating system and attempting to install packages.
+
+7.  **Check for Errors or Warnings:** After the script has finished running, review the output for any error messages or warnings. If you encounter errors, the script will usually provide some guidance or indicate that manual installation steps might be required.
+
+8.  **Verification (Important):** The script attempts to verify if the ARM toolchain and OpenOCD were installed successfully. Look for messages confirming that `arm-none-eabi-gcc` and `openocd` were found. If these verifications fail, or if you encountered errors during the script execution, please refer to the "**Manual Setup**" section of this README for instructions on how to install the dependencies manually.
+
+9.  **Next Steps:** Once the script completes successfully (or you have manually installed the dependencies), you should be ready to build the MockDuino project. Proceed to the "**Building the Project**" section of this README for further instructions.
+
+**Important Notes:**
+
+*   The `setup.sh` script is designed to assist with the installation of common development tools on Linux and macOS. Windows support is currently limited and may require manual steps.
+*   The script assumes you have a working internet connection to download packages.
+*   If you encounter issues running the script or prefer manual installation, please refer to the "**Manual Setup**" section in this README for detailed instructions on installing the ARM toolchain and OpenOCD for your specific operating system.
 
 ### Usage
 
